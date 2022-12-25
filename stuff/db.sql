@@ -1,3 +1,9 @@
+CREATE DATABASE "TO"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
+
 BEGIN;
 
 CREATE TABLE IF NOT EXISTS public.users
@@ -158,4 +164,48 @@ INSERT INTO public.roles (role) VALUES ('USER'::text) returning id;
 INSERT INTO public.roles (role) VALUES ('ADMIN'::text) returning id;
 INSERT INTO public.roles (role) VALUES ('EMPLOYEE'::text) returning id;
 
+INSERT INTO public.status (status) VALUES ('OPEN'::text) returning id;
+INSERT INTO public.status (status) VALUES ('CLOSED'::text) returning id;
+INSERT INTO public.status (status) VALUES ('CANCELED'::text) returning id;
 
+INSERT INTO public.servicetypes (type) VALUES ('Двигатель'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Передняя подвеска'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Задняя подвеска'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Сцепление'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Трансмиссия'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Тормозная система'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Задний мост'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Выхлопная система'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Арматурные работы'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Топливная система'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Электротехнические работы'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Система охлаждения'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Карданные валы'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Смазочно-заправочные работы'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Система выпуска газа'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Шиномонтаж'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Рулевое управление'::text) returning id;
+INSERT INTO public.servicetypes (type) VALUES ('Контрольно-диагностические работы'::text) returning id;
+
+
+INSERT INTO public.types (type) VALUES ('Аксессуары'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Запчасти для ТО'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Масла моторные'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Жидкости для омывателя стекла'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Жидкости тормозные'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Жидкости охлаждающие'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Шины летние'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Шины зимние'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Диски колесные, литые'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Диски колесные, штампованные'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Шины мотоциклетные'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Лампы'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Аккумуляторы'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Камеры заднего вида'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Предохранители'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Парковочные радары'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Электрооборудование'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Инструмент'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Щётки стеклоочистителя'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Охранные системы'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Автоакустика'::name) returning id;
