@@ -1,0 +1,71 @@
+2022-12-25 19:56:50,026 | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2022-12-25 19:56:50,026 | [33mPress CTRL+C to quit[0m
+2022-12-25 19:56:50,044 |  * Restarting with watchdog (windowsapi)
+2022-12-25 19:56:50,384 |  * Debugger is active!
+2022-12-25 19:56:50,387 |  * Debugger PIN: 934-430-339
+2022-12-25 19:56:58,116 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask\\app.py', reloading
+2022-12-25 19:56:58,117 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask\\templating.py', reloading
+2022-12-25 19:56:58,121 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask_login\\utils.py', reloading
+2022-12-25 19:56:58,121 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask_login\\login_manager.py', reloading
+2022-12-25 19:56:58,197 | 127.0.0.1 - - [25/Dec/2022 19:56:58] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2022-12-25 19:56:58,502 |  * Restarting with watchdog (windowsapi)
+2022-12-25 19:56:58,894 |  * Debugger is active!
+2022-12-25 19:56:58,900 |  * Debugger PIN: 934-430-339
+2022-12-25 19:56:58,946 | 127.0.0.1 - - [25/Dec/2022 19:56:58] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2022-12-25 19:56:59,196 | 127.0.0.1 - - [25/Dec/2022 19:56:59] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-12-25 19:56:59,204 | 127.0.0.1 - - [25/Dec/2022 19:56:59] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-12-25 19:56:59,400 | 127.0.0.1 - - [25/Dec/2022 19:56:59] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-12-25 19:56:59,544 | 127.0.0.1 - - [25/Dec/2022 19:56:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2022-12-25 19:57:17,118 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask_login\\__init__.py', reloading
+2022-12-25 19:57:17,147 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask\\__init__.py', reloading
+2022-12-25 19:57:17,239 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask\\scaffold.py', reloading
+2022-12-25 19:57:17,268 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask\\sessions.py', reloading
+2022-12-25 19:57:17,281 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask\\json\\tag.py', reloading
+2022-12-25 19:57:18,137 |  * Restarting with watchdog (windowsapi)
+2022-12-25 19:57:18,454 |  * Debugger is active!
+2022-12-25 19:57:18,457 |  * Debugger PIN: 934-430-339
+2022-12-25 19:58:13,707 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask_login\\mixins.py', reloading
+2022-12-25 19:58:13,916 |  * Restarting with watchdog (windowsapi)
+2022-12-25 19:58:14,238 |  * Debugger is active!
+2022-12-25 19:58:14,244 |  * Debugger PIN: 934-430-339
+2022-12-25 19:58:17,538 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\user.py', reloading
+2022-12-25 19:58:17,538 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\user.py', reloading
+2022-12-25 19:58:17,538 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\user.py', reloading
+2022-12-25 19:58:17,538 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\user.py', reloading
+2022-12-25 19:58:18,366 |  * Restarting with watchdog (windowsapi)
+2022-12-25 19:58:18,759 |  * Debugger is active!
+2022-12-25 19:58:18,759 |  * Debugger PIN: 934-430-339
+2022-12-25 19:58:28,297 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\werkzeug\\security.py', reloading
+2022-12-25 19:58:28,900 |  * Restarting with watchdog (windowsapi)
+2022-12-25 19:58:29,220 |  * Debugger is active!
+2022-12-25 19:58:29,226 |  * Debugger PIN: 934-430-339
+2022-12-25 19:59:43,575 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 19:59:43,575 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 19:59:43,586 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 19:59:43,850 |  * Restarting with watchdog (windowsapi)
+2022-12-25 19:59:44,128 |  * Debugger is active!
+2022-12-25 19:59:44,136 |  * Debugger PIN: 934-430-339
+2022-12-25 19:59:48,249 | list index out of range
+2022-12-25 19:59:48,255 | 127.0.0.1 - - [25/Dec/2022 19:59:48] "GET / HTTP/1.1" 200 -
+2022-12-25 20:00:49,187 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\logging\\__init__.py', reloading
+2022-12-25 20:00:49,686 |  * Restarting with watchdog (windowsapi)
+2022-12-25 20:00:49,986 |  * Debugger is active!
+2022-12-25 20:00:49,993 |  * Debugger PIN: 934-430-339
+2022-12-25 20:00:54,818 |  * Detected change in 'C:\\Users\\nelli\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\flask\\config.py', reloading
+2022-12-25 20:00:55,100 |  * Restarting with watchdog (windowsapi)
+2022-12-25 20:00:55,446 |  * Debugger is active!
+2022-12-25 20:00:55,454 |  * Debugger PIN: 934-430-339
+2022-12-25 20:01:07,809 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 20:01:07,813 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 20:01:07,818 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 20:01:07,818 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 20:01:08,641 |  * Restarting with watchdog (windowsapi)
+2022-12-25 20:01:08,937 |  * Debugger is active!
+2022-12-25 20:01:08,943 |  * Debugger PIN: 934-430-339
+2022-12-25 20:01:12,719 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 20:01:12,719 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 20:01:12,730 |  * Detected change in 'c:\\Users\\nelli\\OneDrive\\Рабочий стол\\SSTU\\7 СЕМЕСТР\\Безопасность систем баз данных\\TOstation\\app\\db.py', reloading
+2022-12-25 20:01:13,079 |  * Restarting with watchdog (windowsapi)
+2022-12-25 20:01:13,486 |  * Debugger is active!
+2022-12-25 20:01:13,486 |  * Debugger PIN: 934-430-339
