@@ -2,5 +2,18 @@
 {% block title %} CTO {% endblock %}
 
 {% block content %}
-
+<div class = "">
+    <h4>Добавление услуги</h4>
+    <form name = 'addService' action = '/addService' method = 'POST'>
+        <p><input class = 'input' type="text" name="name" placeholder = 'Название' minlength = "2" maxlength = "20" required></p>
+        <p><input class = 'input' type="number" name="price" placeholder = 'Цена' minlength = "2" maxlength = "20" required></p>
+        <p><select name = "type" >
+            <option value = "-1">Выберите тип</option>
+            {% for item in type%}
+                <option value = "{{item[0]}}">{{item[1]}}</option>
+            {%endfor%}
+        </select></p>
+        <p><input type = 'submit' class = "input" value = 'Добавить услугу'></p>
+    </form>
+</div>
 {% endblock %}

@@ -2,5 +2,34 @@
 {% block title %} CTO {% endblock %}
 
 {% block content %}
-
+<div class = "createOrder">
+    <h4>Сделать заказ</h4>
+    <form name = 'createOrder' action = '/createOrder' method = 'POST'>
+        {% if current_user.is_authenticated and current_user.get_role() == 'ADMIN'%}
+        
+        <p><select name = "user">
+            <option value = "-1">Выберите пользователя</option>
+            {% for item in users%}
+            <option value = "{{item[0]}}">{{item[1]}} - {{item[2]}}{{item[3]}} - {{item[4]}}</option>
+            {%endfor%}
+        </select></p>
+        <p><input type="text" name="search" placeholder = "Доделать поиск"></p>
+        {%endif%}
+        <p><select name = "good" multiple="multiple">
+            <option value = "-1">Выберите товар</option>
+            
+            {% for type in goddtypes%}
+            <optgroup label="{{type[1]}}">
+                {% for item in good%}
+                {{item}}
+                    {% if item[4] == type[0]%}
+                    <option value = "{{item[0]}}">{{item[1]}} {{item[2]}}</option>
+                    {%endif%}
+                {%endfor%}
+            </optgroup>
+            {%endfor%}
+        </select></p>
+        <p><input type = 'submit' class = "input" value = 'Создать заказ'></p>
+    </form>
+</div>
 {% endblock %}

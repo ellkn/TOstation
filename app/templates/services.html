@@ -4,16 +4,16 @@
 {% block content %}
     {% if current_user.is_authenticated and current_user.get_role() == 'ADMIN'%}
          
-    <p><a class='link' href="/addGood">Добавить товар</a>
-    <a class='link' href="/addTypeGood">Добавить категорию товара</a></p>
+    <p><a class='link' href="/addService">Добавить услугу</a>
+    <a class='link' href="/addTypeService">Добавить категорию услуги</a></p>
                 
     {%endif%}
 
-    <table class = "goods" name = "goods">
+    <table class = "services" name = "services">
 
         <thead>
             <tr>
-                <td>Товар</td>
+                <td>Услуга</td>
                 <td>Стоимость</td>
             </tr>
         </thead>
@@ -24,7 +24,7 @@
                 <td>{{typ[1]}} </td>
             </tr>
             <tr>
-                {%for item in goods%}
+                {%for item in services%}
                     {% if item[4] == typ[0]%}
                     <tr>
                         <td>{{item[1]}}</td>

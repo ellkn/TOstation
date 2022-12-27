@@ -77,13 +77,29 @@ def registration():
         return render_template('error.html')
     
     
-#страница для вывода покупок пользователя (админу)
+#страница для вывода деталей(всем)
 @app.route('/shop')
 def shop():
-    try:
-        return render_template('shop.html')
+    try:        
+        goods = db.getGoods()
+        type = db.getGoodTypes()
+        return render_template('shop.html', goods = goods, type = type)
     except:
         return render_template('error.html')
+    
+
+#страница для вывода услуг пользователя (админу)
+@app.route('/services')
+def services():
+    try:        
+        services = db.getService()
+        type = db.getServiceTypes()
+        print(services)
+        print(type)
+        return render_template('services.html', services = services, type = type)
+    except:
+        return render_template('error.html')
+    
     
     
 #страница для вывода покупок пользователя (пользователю)
@@ -103,6 +119,37 @@ def orders():
         return render_template('error.html')    
     
     
+@app.route('/createOrder',  methods = ["GET", "POST"])
+def createOrder():
+    try:
+        if current_user.is_authenticated:
+            users = db.getUsers() 
+            goods = db.getGoods()
+            goddtypes = db.getGoodTypes()
+            if request.method == 'POST':
+                if current_user.get_role() == 'ADMIN':
+                    if request.form.get("good") == "-1" or request.form.get("user") == "-1":
+                        flash("Введите корректные данные")
+                    else:
+                        db.createOrder(request.form.get("user"), request.form.get("good"))
+                        flash('Заказ создан')
+                        return redirect('/orders')
+                elif current_user.get_role() == 'USER':
+                    if request.form.get("good") == "-1":
+                        flash("Введите корректные данные")
+                    else:
+                        print(request.form.get("good"))
+                        db.createOrder(current_user.get_id(), request.form.get("good"))
+                        flash('Заказ создан')
+                        return redirect('/orders')
+            return render_template('createOrder.html', users = users, good = goods, goddtypes = goddtypes)
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')  
+    except:
+        return render_template('error.html')
+    
+    
 #страница для вывода покупок услуг (админу)
 @app.route('/transactions')
 def transactions():
@@ -116,7 +163,19 @@ def transactions():
 @app.route('/addGood', methods = ["GET", "POST"])
 def addGood():
     try:
-        return render_template('addGood.html')
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN' :
+            goodtypes = db.getGoodTypes()
+            if request.method == 'POST':
+                if request.form.get("type") == "-1" :
+                    flash("Введите корректные данные")
+                else:
+                    db.addGood(request.form.get("name"), request.form.get("price"), request.form.get("type"))
+                    flash('Товар добавлен')
+                    return redirect('/shop')
+            return render_template("addGood.html", type = goodtypes)
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')  
     except:
         return render_template('error.html')
     
@@ -125,7 +184,18 @@ def addGood():
 @app.route('/addTypeGood', methods = ["GET", "POST"])
 def addTypeGood():
     try:
-        return render_template('addTypeGood.html')
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN' :
+            if request.method == 'POST':
+                if request.form.get("type") == "-1" :
+                    flash("Введите корректные данные")
+                else:
+                    db.addTypeService(request.form.get("name"))
+                    flash('Товар добавлен')
+                    return redirect('/shop')
+            return render_template("addTypeGood.html")
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')  
     except:
         return render_template('error.html')
     
@@ -134,7 +204,18 @@ def addTypeGood():
 @app.route('/addTypeService', methods = ["GET", "POST"])
 def addTypeService():
     try:
-        return render_template('addTypeService.html')
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN' :
+            if request.method == 'POST':
+                if request.form.get("type") == "-1" :
+                    flash("Введите корректные данные")
+                else:
+                    db.addTypeService(request.form.get("name"))
+                    flash('Товар добавлен')
+                    return redirect('/services')
+            return render_template("addTypeService.html")
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')  
     except:
         return render_template('error.html')
     
@@ -143,7 +224,19 @@ def addTypeService():
 @app.route('/addService', methods = ["GET", "POST"])
 def addService():
     try:
-        return render_template('addService.html')
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN' :
+            goodtypes = db.getServiceTypes()
+            if request.method == 'POST':
+                if request.form.get("type") == "-1" :
+                    flash("Введите корректные данные")
+                else:
+                    db.addService(request.form.get("name"), request.form.get("price"), request.form.get("type"))
+                    flash('Услуга добавлена')
+                    return redirect('/services')
+            return render_template("addService.html", type = goodtypes)
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')  
     except:
         return render_template('error.html')
 

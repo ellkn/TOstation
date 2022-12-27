@@ -190,15 +190,32 @@ def getTransactions():
 
 def getGoods():
     try:
-        return getData("select g.id, g.name, g.price, t.type from goods g join types t on t.id = g.type")
+        return getData("select g.id, g.name, g.price, t.type, g.type from goods g join types t on t.id = g.type")
     except Exception as ex:
         logging.error(ex)
         print(ex)
 
 
+def getGoodTypes():
+    try:
+        return getData("select * from types")
+    except Exception as ex:
+        logging.error(ex)
+        print(ex)
+        
+        
+
 def getService():
     try:
-        return getData("select s.id, s.name, s.price, st.type from services s join servicetypes st on st.id = s.type")
+        return getData("select s.id, s.name, s.price, st.type, s.type from services s join servicetypes st on st.id = s.type")
+    except Exception as ex:
+        logging.error(ex)
+        print(ex)
+
+
+def getServiceTypes():
+    try:
+        return getData("select * from servicetypes")
     except Exception as ex:
         logging.error(ex)
         print(ex)

@@ -2,5 +2,12 @@
 {% block title %} CTO {% endblock %}
 
 {% block content %}
-
+<div class = "">
+    <h4>Добавление категории услуг</h4>
+    <form name = 'addTypeService' action = '/addTypeService' method = 'POST'>
+        <p><input class = 'input' type="text" name="name" placeholder = 'Название' minlength = "2" maxlength = "20" required></p>
+        
+        <p><input type = 'submit' class = "input" value = 'Добавить категорию услуги'></p>
+    </form>
+</div>
 {% endblock %}
