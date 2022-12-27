@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS public.serviceshop
 CREATE TABLE IF NOT EXISTS public.types
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY,
-    type name,
+    type text,
     PRIMARY KEY (id)
 );
 
@@ -188,24 +188,24 @@ INSERT INTO public.servicetypes (type) VALUES ('Рулевое управлен�
 INSERT INTO public.servicetypes (type) VALUES ('Контрольно-диагностические работы'::text) returning id;
 
 
-INSERT INTO public.types (type) VALUES ('Аксессуары'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Запчасти для ТО'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Масла моторные'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Жидкости для омывателя стекла'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Жидкости тормозные'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Жидкости охлаждающие'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Шины летние'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Шины зимние'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Диски колесные, литые'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Диски колесные, штампованные'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Шины мотоциклетные'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Лампы'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Аккумуляторы'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Камеры заднего вида'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Предохранители'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Парковочные радары'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Электрооборудование'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Инструмент'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Щётки стеклоочистителя'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Охранные системы'::name) returning id;
-INSERT INTO public.types (type) VALUES ('Автоакустика'::name) returning id;
+INSERT INTO public.types (type) VALUES ('Аксессуары'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Запчасти для ТО'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Масла моторные'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Жидкости для омывателя стекла'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Жидкости тормозные'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Жидкости охлаждающие'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Шины летние'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Шины зимние'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Диски колесные, литые'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Диски колесные, штампованные'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Шины мотоциклетные'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Лампы'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Аккумуляторы'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Камеры заднего вида'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Предохранители'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Парковочные радары'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Электрооборудование'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Инструмент'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Щётки стеклоочистителя'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Охранные системы'::text) returning id;
+INSERT INTO public.types (type) VALUES ('Автоакустика'::text) returning id;

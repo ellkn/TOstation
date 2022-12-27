@@ -2,5 +2,30 @@
 {% block title %} CTO {% endblock %}
 
 {% block content %}
+<input class = "filter" type="text" id="myInputUser" onkeyup="myFunctionUser()" placeholder="Ищите по фамилии или имени" title="По фио">
+    
+<table class = "users" name = "users">
 
+    <thead>
+        <tr>
+            <td>Фамилия Имя</td>
+            <td>Email</td>
+            <td>Номер телефона</td>
+            <td>Роль</td>
+            <td>Действие</td>
+        </tr>
+    </thead>
+
+    <tbody id = "myTableUser">
+        {%for item in users%}
+        <tr>
+            <td>{{item[2]}} {{item[3]}}</td>
+            <td>{{item[1]}}</td>
+            <td>{{item[4]}}</td>
+            <td>{{item[5]}}</td>
+            <td><a class='lightlink' href="/edit/{{item[0]}}">Редактировать</a></td>
+        </tr>
+        {%endfor%}
+    </tbody>    
+</table>
 {% endblock %}

@@ -90,7 +90,15 @@ def shop():
 @app.route('/orders')
 def orders():
     try:
-        return render_template('orders.html')
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN':
+            orders = db.getOrders()
+            return render_template('orders.html', orders = orders)
+        elif current_user.is_authenticated and current_user.get_role() == 'USER':
+            orders = db.getUserOrders(current_user.get_id())
+            return render_template('orders.html', orders = orders)
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')
     except:
         return render_template('error.html')    
     
@@ -144,7 +152,12 @@ def addService():
 @app.route('/users')
 def users():
     try:
-        return render_template('users.html')
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN':
+            users = db.getUsers()
+            return render_template('users.html', users = users)
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')
     except:
         return render_template('error.html')
     
@@ -153,14 +166,31 @@ def users():
 @app.route('/edit/<id>', methods = ["GET", "POST"])
 def edit(id):
     try:
-        return render_template('edit.html')
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN':
+            user = db.getUserById(id)
+            role = db.getRoles()
+            if request.method == "POST":
+                if request.form.get("role") == "-1":
+                    flash("Введите корректные данные")
+                else:
+                    if db.getAdminsCount()[0][0] == 1 and current_user.get_role() == 'ADMIN' and request.form.get("role") != 2:
+                        flash("Вы не можете изменить роль у единственного пользователя с ролью ADMIN")
+                    else:
+                        db.editUser(request.form.get("email"), request.form.get("lastname"), request.form.get("firstname"), request.form.get("phone"), request.form.get("role"), id)
+                    return render_template('edit.html', user = user, role = role)  
+                
+            return render_template('edit.html', user = user, role = role)   
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')  
     except:
         return render_template('error.html')
     
+
+@app.errorhandler(404)
+def pageNotFount(error):
+    return render_template('error.html', title="Страница не найдена")
     
-@app.route('/error')
-def error():
-    return render_template('error.html')
-    
-    
-app.run(debug=True)
+
+if __name__ == '__main__':
+   app.run(debug = True)

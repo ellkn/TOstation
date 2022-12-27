@@ -2,12 +2,12 @@ from flask_login import UserMixin
 import db as db
 
 class User:
-    def __init__(self, id, lastname, firstname, email, password, phone, role):
+    def __init__(self, id, email, password, lastname, firstname, phone, role):
         self.id = id
-        self.lastname = lastname
-        self.firstname = firstname
         self.email = email
         self.password = password
+        self.lastname = lastname
+        self.firstname = firstname
         self.phone = phone
         self.role = role
         
