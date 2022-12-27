@@ -81,7 +81,7 @@ def createOrder(user_id, goods_id):
     date = datetime.datetime.now()
     try:
         for good in goods_id:
-            setData(f"INSERT INTO shop (user_id, good_id, datetime) VALUES {user_id, good, date}")
+            setData(f"INSERT INTO shop (user_id, good_id, datetime) VALUES ({user_id}, {good}, '{date}')")
     except Exception as ex:
         print(ex)
         logging.error(ex)
@@ -90,10 +90,10 @@ def createOrder(user_id, goods_id):
 def createServiceOrder(employee_id, user_id, services_id):
     date = datetime.datetime.now()
     date_out = (date + datetime.timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')
+    print(type(date), type(date_out))
     try:
         for service in services_id:
-            #group by ???
-            setData(f"INSERT INTO serviceshop (employees_id, user_id, good_id, service_id, datein, dateout, status) VALUES {employee_id, user_id, service, date, date_out, 1}")
+            setData(f"INSERT INTO serviceshop (employees_id, user_id, service_id, datein, dateout, status) VALUES ({employee_id}, {user_id}, {service}, '{date}', '{date_out}', {1})")
     except Exception as ex:
         print(ex)
         logging.error(ex)
@@ -118,7 +118,7 @@ def addService(name, price, type_id):
 
 def addTypeGood(type):
     try:
-        setData(f"INSERT INTO types (type) VALUES {type}")
+        setData(f"INSERT INTO types (type) VALUES ('{type}')")
     except Exception as ex:
         print(ex)
         logging.error(ex)
@@ -126,7 +126,7 @@ def addTypeGood(type):
 
 def addTypeService(type):
     try:
-        setData(f"INSERT INTO servicetypes (type) VALUES {type}")
+        setData(f"INSERT INTO servicetypes (type) VALUES ('{type}')")
     except Exception as ex:
         print(ex)
         logging.error(ex)
@@ -147,6 +147,14 @@ def getUsers():
         logging.error(ex)
         print(ex)
     
+    
+def getEmployees():
+    try:
+        return getData("select u.id, u.email, u.lastname, u.firstname, u.phone, r.role from users u join roles r on r.id = u.role where u.role = 2")
+    except Exception as ex:
+        logging.error(ex)
+        print(ex)
+
 
 def getRoles():
     try:
@@ -182,7 +190,15 @@ def getUserOrders(user_id):
 
 def getTransactions():
     try:
-        return getData("select s.id, e.email, e.lastname, e.firstname, e.phone, u.email, u.lastname, u.firstname, u.phone, ser.name, ser.price, st.type, s.datein, s.dateout, ss.status from serviceshop s join users u on u.id = s.user_id join users e on u.id = s.employees_id  join status ss on ss.id = s.status join services ser on ser.id = s.service_id join servicetypes st on st.id = ser.type")
+        return getData("select s.id, e.email, e.lastname, e.firstname, e.phone, u.email, u.lastname, u.firstname, u.phone, ser.name, ser.price, st.type, s.datein, s.dateout, ss.status from serviceshop s join users u on u.id = s.user_id join users e on e.id = s.employees_id  join status ss on ss.id = s.status join services ser on ser.id = s.service_id join servicetypes st on st.id = ser.type")
+    except Exception as ex:
+        logging.error(ex)
+        print(ex)
+        
+        
+def getUserTransactions(id):
+    try:
+        return getData(f"select s.id, e.email, e.lastname, e.firstname, e.phone, u.email, u.lastname, u.firstname, u.phone, ser.name, ser.price, st.type, s.datein, s.dateout, ss.status from serviceshop s join users u on u.id = s.user_id join users e on e.id = s.employees_id  join status ss on ss.id = s.status join services ser on ser.id = s.service_id join servicetypes st on st.id = ser.type where s.user_id = {id}")
     except Exception as ex:
         logging.error(ex)
         print(ex)

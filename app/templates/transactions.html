@@ -2,5 +2,46 @@
 {% block title %} CTO {% endblock %}
 
 {% block content %}
+<p><a href="/createTransaction" class="link">Заказать услугу</a></p>
 
+    <p><input class = "filter" type="text" id="myInputT" onkeyup="myFunctionT()" placeholder="Ищите по названию товара.." title="По названию"></p>
+
+        <table class = "">
+            <thead>
+                <tr>
+                    <td>Номер заказа</td>
+                    <td>Сотрудник</td>
+                    <td>Почта</td>
+                    <td>Номер телефона</td>
+                    <td>Контактное лицо</td>
+                    <td>Почта</td>
+                    <td>Номер телефона</td>
+                    <td>Название услуги</td>
+                    <td>Цена услуги</td>
+                    <td>Тип услуги</td>
+                    <td>Дата начала</td>
+                    <td>Дата конца</td>
+                    <td>Статус</td>
+                </tr>
+            </thead>
+            <tbody  id = "myTableT">
+                {%for item in transactions%}
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[2]}} {{item[3]}} </td>
+                    <td>{{item[1]}}</td>
+                    <td><a class = "contact" href="tel:{{item[4]}}">{{item[4]}}</a></td>
+                    <td>{{item[6]}} {{item[7]}}</td>
+                    <td>{{item[5]}}</td>
+                    <td><a class = "contact" href="tel:{{item[8]}}">{{item[8]}}</a></td>
+                    <td>{{item[9]}}</td>
+                    <td>{{item[10]}}</td>
+                    <td>{{item[11]}}</td>
+                    <td>{{item[12]}}</td>
+                    <td>{{item[13]}}</td>
+                    <td>{{item[14]}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
 {% endblock %}

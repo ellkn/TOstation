@@ -94,8 +94,6 @@ def services():
     try:        
         services = db.getService()
         type = db.getServiceTypes()
-        print(services)
-        print(type)
         return render_template('services.html', services = services, type = type)
     except:
         return render_template('error.html')
@@ -138,7 +136,6 @@ def createOrder():
                     if request.form.get("good") == "-1":
                         flash("Введите корректные данные")
                     else:
-                        print(request.form.get("good"))
                         db.createOrder(current_user.get_id(), request.form.get("good"))
                         flash('Заказ создан')
                         return redirect('/orders')
@@ -149,12 +146,53 @@ def createOrder():
     except:
         return render_template('error.html')
     
+
+@app.route('/createTransaction',  methods = ["GET", "POST"])
+def createTransaction():
+    try:
+        if current_user.is_authenticated:
+            users = db.getUsers() 
+            employees = db.getEmployees() 
+            services = db.getService()
+            servicetypes = db.getServiceTypes()
+            if request.method == 'POST':
+                if current_user.get_role() == 'ADMIN':
+                    if request.form.get("service") == "-1" or request.form.get("user") == "-1" or request.form.get("employee") == "-1":
+                        flash("Введите корректные данные") 
+                    else:
+                        db.createServiceOrder(request.form.get("employee"), request.form.get("user"), request.form.get("service"))
+                        flash('Заказ создан')
+                        print(request.form.get("service"))
+                        return redirect('/transactions')
+                elif current_user.get_role() == 'USER':
+                    if request.form.get("service") == "-1" or request.form.get("employee") == "-1":
+                        flash("Введите корректные данные")
+                    else:
+                        db.createServiceOrder(request.form.get("employee"), current_user.get_id(), request.form.get("service"))
+                        flash('Заказ создан')
+                        return redirect('/transactions')
+            return render_template('createTransaction.html', users = users, employees = employees, services = services, servicetypes = servicetypes)
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')  
+    except:
+        return render_template('error.html')
+
+
     
 #страница для вывода покупок услуг (админу)
 @app.route('/transactions')
 def transactions():
     try:
-        return render_template('transactions.html')
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN':
+            transactions = db.getTransactions()
+            return render_template('transactions.html', transactions = transactions)
+        elif current_user.is_authenticated and current_user.get_role() == 'USER':
+            transactions = db.getUserTransactions(current_user.get_id())
+            return render_template('transactions.html', transactions = transactions)
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')
     except:
         return render_template('error.html')
     
@@ -186,12 +224,10 @@ def addTypeGood():
     try:
         if current_user.is_authenticated and current_user.get_role() == 'ADMIN' :
             if request.method == 'POST':
-                if request.form.get("type") == "-1" :
-                    flash("Введите корректные данные")
-                else:
-                    db.addTypeService(request.form.get("name"))
-                    flash('Товар добавлен')
-                    return redirect('/shop')
+                db.addTypeService(request.form.get("name"))
+                print(request.form.get("name"))
+                flash('Категория товара добавлена')
+                return redirect('/shop')
             return render_template("addTypeGood.html")
         else:
             flash('Вы не имеете достаточных прав для перехода на данную страницу')
@@ -206,12 +242,10 @@ def addTypeService():
     try:
         if current_user.is_authenticated and current_user.get_role() == 'ADMIN' :
             if request.method == 'POST':
-                if request.form.get("type") == "-1" :
-                    flash("Введите корректные данные")
-                else:
-                    db.addTypeService(request.form.get("name"))
-                    flash('Товар добавлен')
-                    return redirect('/services')
+                db.addTypeService(request.form.get("name"))
+                print(request.form.get("name"))
+                flash('Категория добавлена')
+                return redirect('/services')
             return render_template("addTypeService.html")
         else:
             flash('Вы не имеете достаточных прав для перехода на данную страницу')
