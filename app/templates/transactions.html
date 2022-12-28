@@ -22,6 +22,7 @@
                     <td>Дата начала</td>
                     <td>Дата конца</td>
                     <td>Статус</td>
+                    <td>Действие</td>
                 </tr>
             </thead>
             <tbody  id = "myTableT">
@@ -40,6 +41,7 @@
                     <td>{{item[12]}}</td>
                     <td>{{item[13]}}</td>
                     <td>{{item[14]}}</td>
+                    <td><a href="/editTransaction/{{item[0]}}" class="link">Изменить статус</a></td>
                 </tr>
                 {%endfor%}
             </tbody>

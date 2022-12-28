@@ -104,7 +104,7 @@ def services():
 @app.route('/orders')
 def orders():
     try:
-        if current_user.is_authenticated and current_user.get_role() == 'ADMIN':
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN' or current_user.get_role() == 'EMPLOYEE':
             orders = db.getOrders()
             return render_template('orders.html', orders = orders)
         elif current_user.is_authenticated and current_user.get_role() == 'USER':
@@ -132,7 +132,7 @@ def createOrder():
                         db.createOrder(request.form.get("user"), request.form.get("good"))
                         flash('Заказ создан')
                         return redirect('/orders')
-                elif current_user.get_role() == 'USER':
+                elif current_user.get_role() == 'USER' or current_user.get_role() == 'EMPLOYEE':
                     if request.form.get("good") == "-1":
                         flash("Введите корректные данные")
                     else:
@@ -156,7 +156,7 @@ def createTransaction():
             services = db.getService()
             servicetypes = db.getServiceTypes()
             if request.method == 'POST':
-                if current_user.get_role() == 'ADMIN':
+                if current_user.get_role() == 'ADMIN' :
                     if request.form.get("service") == "-1" or request.form.get("user") == "-1" or request.form.get("employee") == "-1":
                         flash("Введите корректные данные") 
                     else:
@@ -164,7 +164,7 @@ def createTransaction():
                         flash('Заказ создан')
                         print(request.form.get("service"))
                         return redirect('/transactions')
-                elif current_user.get_role() == 'USER':
+                elif current_user.get_role() == 'USER' or current_user.get_role() == 'EMPLOYEE':
                     if request.form.get("service") == "-1" or request.form.get("employee") == "-1":
                         flash("Введите корректные данные")
                     else:
@@ -184,7 +184,7 @@ def createTransaction():
 @app.route('/transactions')
 def transactions():
     try:
-        if current_user.is_authenticated and current_user.get_role() == 'ADMIN':
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN' or current_user.get_role() == 'EMPLOYEE':
             transactions = db.getTransactions()
             return render_template('transactions.html', transactions = transactions)
         elif current_user.is_authenticated and current_user.get_role() == 'USER':
@@ -307,6 +307,28 @@ def edit(id):
                     return render_template('edit.html', user = user, role = role)  
                 
             return render_template('edit.html', user = user, role = role)   
+        else:
+            flash('Вы не имеете достаточных прав для перехода на данную страницу')
+            return redirect('/')  
+    except:
+        return render_template('error.html')
+    
+    
+@app.route('/editTransaction/<id>', methods = ["GET", "POST"])
+def editTransaction(id):
+    try:
+        if current_user.is_authenticated and current_user.get_role() == 'ADMIN' or current_user.get_role() == 'EMPLOYEE':
+            status = db.getStatus()
+            tr = db.getTransaction(id)
+            if request.method == "POST":
+                print(request.form.get("status") )
+                if request.form.get("status") == "-1":
+                    flash("Введите корректные данные")
+                else:
+                    db.editTransaction(id, request.form.get("status"))
+                    return redirect('/transactions')
+                
+            return render_template('editTransaction.html', status = status, tr = tr)   
         else:
             flash('Вы не имеете достаточных прав для перехода на данную страницу')
             return redirect('/')  

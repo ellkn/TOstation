@@ -235,3 +235,30 @@ def getServiceTypes():
     except Exception as ex:
         logging.error(ex)
         print(ex)
+        
+    
+
+def getStatus():
+    try:
+        return getData("select * from status")
+    except Exception as ex:
+        logging.error(ex)
+        print(ex)    
+
+
+def getTransaction(id):
+    try:
+        return getData(f"select s.*, st.status from serviceshop s join status st on st.id = s.status where s.id = {id}")
+    except Exception as ex:
+        logging.error(ex)
+        print(ex)
+        
+        
+def editTransaction(id, status):
+    try:
+        print(status)
+        return setData(f"UPDATE serviceshop SET status = {status} WHERE id = {id}")
+    
+    except Exception as ex:
+        logging.error(ex)
+        print(ex)
